@@ -9,6 +9,11 @@ class Student
     {
         return "Hello World";
     }
+
+    function full_name()
+    {
+        return "{$this->first_name} {$this->last_name}";
+    }
 }
 
 
@@ -23,7 +28,9 @@ $student2->last_name = 'Ahmad';
 echo $student1->first_name . " " . $student1->last_name . "<br />";
 echo $student2->first_name . " " . $student2->last_name . "<br />";
 
-echo $student1->say_hello() . "<br/>";
+echo "<br/>Full Name: <br/>";
+echo $student1->full_name() . "<br/>";
+echo $student2->full_name() . "<br/>";
 
 $class_methods = get_class_methods('Student');
 echo "Class Vars:<br/>";
