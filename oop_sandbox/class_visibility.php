@@ -40,6 +40,8 @@ class PartTimeStudent extends Student
 $student1 = new PartTimeStudent;
 $student1->first_name = 'John';
 $student1->last_name = 'Recardo';
+$student1->tuition = 400;
+echo $student1->tuition . "<br/>";
 
 echo $student1->first_name . " " . $student1->last_name . "<br />";
 
