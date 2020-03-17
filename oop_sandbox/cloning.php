@@ -23,7 +23,16 @@ $b = clone $a;
 echo $b->name . "<br/>";
 echo "<hr/>";
 
-$b->name='tea';
+$b->name = 'tea';
 
 echo $a->name . "<br />";
 echo $b->name . "<br/>";
+echo "<hr/>";
+
+$c = $b;
+$c->name = "juice";
+
+echo $a->name . "<br />";
+echo $b->name . "<br/>";
+echo $c->name . "<br/>";
+echo "<hr/>";
