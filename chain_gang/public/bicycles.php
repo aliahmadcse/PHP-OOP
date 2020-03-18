@@ -3,7 +3,6 @@
 <?php $page_title = 'Inventory'; ?>
 <?php include(SHARED_PATH . '/public_header.php'); ?>
 
-<?php $bicylce = new Bicycle([]); ?>
 
 <div id="main">
 
@@ -27,19 +26,24 @@
         <th>Condition</th>
         <th>Price</th>
       </tr>
+      <?php
+      $args = ['brand' => 'Trek', 'model' => 'Emonda', 'year' => '2017'];
+      $bicylce = new Bicycle($args);
 
-      <tr>
-        <td>Brand</td>
-        <td>Model</td>
-        <td>Year</td>
-        <td>Category</td>
-        <td>Gender</td>
-        <td>Color</td>
-        <td>Weight</td>
-        <td>Condition</td>
-        <td>Price</td>
-      </tr>
-
+      ?>
+      <?php for ($i = 0; $i <= 10; $i++) { ?>
+        <tr>
+          <td><?php echo h($bicylce->brand); ?></td>
+          <td><?php echo h($bicylce->model); ?></td>
+          <td><?php echo h($bicylce->year); ?></td>
+          <td><?php echo h($bicylce->category); ?></td>
+          <td><?php echo h($bicylce->gender); ?></td>
+          <td><?php echo h($bicylce->color); ?></td>
+          <td><?php echo h($bicylce->weight_kg()) . ' / ' . h($bicylce->weight_lbs()); ?></td>
+          <td><?php echo h($bicylce->condition()); ?></td>
+          <td><?php echo "$" . h(number_format($bicylce->price(), 2)); ?></td>
+        </tr>
+      <?php } ?>
     </table>
   </div>
 

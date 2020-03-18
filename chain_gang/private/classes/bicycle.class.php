@@ -5,23 +5,26 @@ class Bicycle
     public const CATEGORIES = [
         'Hybrid', 'Road', 'City', 'Mountain', 'Cruiser', 'BMX'
     ];
-    public const GENDER = ['men', 'women', 'unisex'];
-    public const CONDITION = [
-        1 => 'Beat up', 2 => 'Decent', 3 => 'Good',
-        4 => 'Great', 5 => 'Like New'
+    public const GENDERS = ['men', 'women', 'unisex'];
+    public const CONDITION_OPTIONS = [
+        1 => 'Beat up',
+        2 => 'Decent',
+        3 => 'Good',
+        4 => 'Great',
+        5 => 'Like New'
     ];
 
     // class properties
-    public  $brand;
-    public  $model;
-    public  $year;
-    public  $category;
-    public  $color;
-    public  $description;
-    public  $gender;
-    public  $price;
-    public  $condition_id;
-    private $weight_kg = 0.0;
+    public      $brand;
+    public      $model;
+    public      $year;
+    public      $category;
+    public      $color;
+    public      $description;
+    public      $gender;
+    public      $price;
+    protected   $condition_id;
+    protected   $weight_kg = 0.0;
     // construct magic method to initialize properties
     // at object creation
     public function __construct($args = [])
@@ -33,11 +36,17 @@ class Bicycle
         $this->color        = $args['color']        ?? NULL;
         $this->descripion   = $args['description']  ?? NULL;
         $this->gender       = $args['gender']       ?? NULL;
-        $this->price        = $args['price']        ?? NULL;
+        $this->price        = $args['price']        ?? 20;
         $this->condition_id = $args['condition_id'] ?? NULL;
+        $this->weight_kg    = $args['weight_kg']    ?? 0.0;
     }
 
-    public function set_wieight_kg($weight)
+    public function price()
+    {
+        return floatval($this->price);
+    }
+
+    public function set_weight_kg($weight)
     {
         $this->weight_kg = $weight;
     }
@@ -61,8 +70,9 @@ class Bicycle
     public function condition()
     {
         $condition_id = $this->condition_id;
-        return self::CONDITION[$condition_id];
+        if ($condition_id > 0) {
+            return self::CONDITION_OPTIONS[$condition_id];
+        }
+        return "Unknown";
     }
-
-    
 }
