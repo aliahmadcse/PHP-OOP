@@ -3,6 +3,8 @@
 <?php $page_title = 'Inventory'; ?>
 <?php include(SHARED_PATH . '/public_header.php'); ?>
 
+<?php $bicylce = new Bicycle([]); ?>
+
 <div id="main">
 
   <div id="page">

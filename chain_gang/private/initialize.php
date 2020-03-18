@@ -27,5 +27,10 @@
   // Load class definitions manually
 
   // Autoload class definitions
+  function my_autoload($class){
+    if (preg_match('/^\w+$/',$class)){
+      include PRIVATE_PATH . "/classes/". $class .".class.php";
+    }
+  }
 
-?>
+  spl_autoload_register('my_autoload');
